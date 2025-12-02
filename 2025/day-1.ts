@@ -19,8 +19,6 @@ function dialFn(value: number, direction: "L" | "R") {
 }
 
 for (let i = 0; i < dials.length; i++) {
-  if (count === 0) atZero++;
-
   const dial = dials[i];
   const operator = dial.charAt(0);
 
@@ -28,11 +26,13 @@ for (let i = 0; i < dials.length; i++) {
 
   if (operator === "L") {
     count = dialFn(number, "L");
+    if (count === 0) atZero++;
     continue;
   }
 
   if (operator === "R") {
     count = dialFn(number, "R");
+    if (count === 0) atZero++;
     continue;
   }
 }
