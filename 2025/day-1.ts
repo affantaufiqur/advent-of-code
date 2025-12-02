@@ -9,12 +9,18 @@ const dials = input
   .filter((f) => f.length > 0);
 
 let atZero = 0;
+let pastZero = 0;
 
 function dialFn(value: number, direction: "L" | "R") {
   if (direction === "L") {
-    return (count - value) % 100;
+    const passes =
+      Math.floor(value / 100) + (count > 0 && value % 100 >= count ? 1 : 0);
+    pastZero += passes;
+    return (((count - value) % 100) + 100) % 100;
   }
 
+  const passes = Math.floor((count + value) / 100) - Math.floor(count / 100);
+  pastZero += passes;
   return (count + value) % 100;
 }
 
@@ -37,4 +43,4 @@ for (let i = 0; i < dials.length; i++) {
   }
 }
 
-console.log(atZero);
+console.log("at zero", atZero, "during rotations", pastZero);
