@@ -26,7 +26,7 @@ function isRepeated(number: string) {
   const len = number.length;
 
   for (let i = 1; i <= len / 2; i++) {
-    if (len % 1 !== 0) continue;
+    if (len % i !== 0) continue;
     const pattern = number.substring(0, i);
     const repeated = pattern.repeat(len / i);
     if (repeated === number) {
