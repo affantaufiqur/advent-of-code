@@ -24,11 +24,15 @@ for (let i = 0; i < ids.length; i++) {
 
 function isRepeated(number: string) {
   const len = number.length;
-  if (len % 2 !== 0) return false;
 
-  const mid = len / 2;
-
-  return number.slice(0, mid) === number.slice(mid);
+  for (let i = 1; i <= len / 2; i++) {
+    if (len % 1 !== 0) continue;
+    const pattern = number.substring(0, i);
+    const repeated = pattern.repeat(len / i);
+    if (repeated === number) {
+      return true;
+    }
+  }
 }
 
 function sumSequences(sequences: string[]) {
